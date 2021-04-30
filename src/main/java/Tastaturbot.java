@@ -3,14 +3,24 @@ import robocode.*;
 import java.awt.event.KeyEvent;
 
 import static java.awt.event.KeyEvent.*;
-import static robocode.util.Utils.normalAbsoluteAngle;
-import static robocode.util.Utils.normalRelativeAngle;
 
+/**
+ * Ein Roboter, der vom User gesteuert werden kann
+ * Der Roboter kann:
+ * mit H - nach links fahren
+ * mit J - nach rechts fahren
+ * mit K - die Richtung auf geradeaus setzen
+ * mit L - die Richtung auf rückwärts setzen
+ * mit Space - die Kanone feuern
+ */
 public class Tastaturbot extends AdvancedRobot {
 
     boolean moveForward = false;
     boolean moveBackward = false;
 
+    /**
+     * Hauptfunktion des Roboters
+     */
     public void run() {
         while (true) {
             if(moveBackward){
@@ -22,6 +32,10 @@ public class Tastaturbot extends AdvancedRobot {
         }
     }
 
+    /**
+     * Handelt, wenn eine Taste auf der Tastatur gedrückt wird die Verarbeitung des Roboter
+     * @param e - TastaturEvent
+     */
     public void onKeyPressed(KeyEvent e) {
         switch (e.getKeyCode()) {
             case VK_H:      //nach links drehen
@@ -44,6 +58,10 @@ public class Tastaturbot extends AdvancedRobot {
         }
     }
 
+    /**
+     * Schießt, wenn sich ein Roboter direkt vor der Kanone steht
+     * @param e - ScanEvent
+     */
     public void onScannedRobot(ScannedRobotEvent e) {
         fire(1);
     }
