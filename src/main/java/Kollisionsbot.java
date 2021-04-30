@@ -1,12 +1,18 @@
 import robocode.*;
 
+/**
+ * Ein Roboter, der andere Roboter verfolgt
+ */
 public class Kollisionsbot extends AdvancedRobot {
 
     String lockedOnName;
     boolean lockedOn = false;
 
+    /**
+     * Hauptmethode des Roboter
+     * Dreht das Radar permanent und scant die Umgebung nach anderen Robotern ab
+     */
     public void run() {
-
         while (true) {
             turnRadarRight(100);
             execute();
@@ -14,6 +20,13 @@ public class Kollisionsbot extends AdvancedRobot {
         }
     }
 
+
+    /**
+     * Wird beim erfolgreichen scan() aufgerufen
+     * Locked den Kollisionsbot auf einen anderen Roboter und verfolgt diesen bis der
+     * andere Roboter eliminiert wurde
+     * @param e - ScanRobotEvent mit den Daten über den gescannten Roboter
+     */
     public void onScannedRobot(ScannedRobotEvent e) {
         System.out.println("Found "+ e.getName() + " " +lockedOnName + " "+ " "+ lockedOn);
         if (!lockedOn) {
@@ -45,10 +58,26 @@ public class Kollisionsbot extends AdvancedRobot {
         }
     }
 
+    /**
+     * Überprüft, ob der Kollisionsbot einen anderen Roboter eliminiert hat
+     * @param event - Wenn der Kollisionsbot einen Robot trifft
+     */
     public void onBulletHit(BulletHitEvent event) {
-        if (event.getName().equals(lockedOnName) && event.getEnergy()<=0){
+        if (event.getEnergy()<=0){
             System.out.println("Eliminatet Target: "+lockedOnName);
             lockedOn = false;
+        }
+    }
+
+    /**
+     * Überprüft, ob der LockOn-Robot noch lebt
+     * @param event - Wenn ein Roboter eliminiert wird
+     */
+    @Override
+    public void onRobotDeath(RobotDeathEvent event) {
+        if (event.getName().equals(lockedOnName)){
+            lockedOn = false;
+            lockedOnName = "";
         }
     }
 }
