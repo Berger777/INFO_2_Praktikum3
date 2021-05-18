@@ -1,7 +1,9 @@
+package prak3;
+
 import robocode.*;
 
 /**
- * Ein Roboter, der am Rande des Spielfelds lang fährt und in die Mitte schießt
+ * Ein Roboter, der am Rande des Spielfelds lang faehrt und in die Mitte schiesst
  */
 public class Umrandungsbot extends AdvancedRobot {
 
@@ -65,7 +67,7 @@ public class Umrandungsbot extends AdvancedRobot {
     }
 
     /**
-     * Wenn der Roboter einen Roboter sieht schießt er
+     * Wenn der Roboter einen Roboter sieht schiesst er
      * @param e
      */
     public void onScannedRobot(ScannedRobotEvent e) {

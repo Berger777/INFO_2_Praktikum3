@@ -1,3 +1,5 @@
+package prak3;
+
 import robocode.*;
 
 /**
@@ -25,8 +27,9 @@ public class Kollisionsbot extends AdvancedRobot {
      * Wird beim erfolgreichen scan() aufgerufen
      * Locked den Kollisionsbot auf einen anderen Roboter und verfolgt diesen bis der
      * andere Roboter eliminiert wurde
-     * @param e - ScanRobotEvent mit den Daten über den gescannten Roboter
+     * @param e - ScanRobotEvent mit den Daten ueber den gescannten Roboter
      */
+    @Override
     public void onScannedRobot(ScannedRobotEvent e) {
         System.out.println("Found "+ e.getName() + " " +lockedOnName + " "+ " "+ lockedOn);
         if (!lockedOn) {
@@ -59,7 +62,7 @@ public class Kollisionsbot extends AdvancedRobot {
     }
 
     /**
-     * Überprüft, ob der Kollisionsbot einen anderen Roboter eliminiert hat
+     * Ueberprueft, ob der Kollisionsbot einen anderen Roboter eliminiert hat
      * @param event - Wenn der Kollisionsbot einen Robot trifft
      */
     public void onBulletHit(BulletHitEvent event) {
@@ -70,7 +73,7 @@ public class Kollisionsbot extends AdvancedRobot {
     }
 
     /**
-     * Überprüft, ob der LockOn-Robot noch lebt
+     * Ueberprueft, ob der LockOn-Robot noch lebt
      * @param event - Wenn ein Roboter eliminiert wird
      */
     @Override

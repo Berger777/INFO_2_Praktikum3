@@ -1,3 +1,5 @@
+package prak3;
+
 import robocode.*;
 
 import java.awt.event.KeyEvent;
@@ -10,7 +12,7 @@ import static java.awt.event.KeyEvent.*;
  * mit H - nach links fahren
  * mit J - nach rechts fahren
  * mit K - die Richtung auf geradeaus setzen
- * mit L - die Richtung auf rückwärts setzen
+ * mit L - die Richtung auf rueckwaerts setzen
  * mit Space - die Kanone feuern
  */
 public class Tastaturbot extends AdvancedRobot {
@@ -33,7 +35,7 @@ public class Tastaturbot extends AdvancedRobot {
     }
 
     /**
-     * Handelt, wenn eine Taste auf der Tastatur gedrückt wird die Verarbeitung des Roboter
+     * Handelt, wenn eine Taste auf der Tastatur gedrueckt wird die Verarbeitung des Roboter
      * @param e - TastaturEvent
      */
     public void onKeyPressed(KeyEvent e) {
@@ -59,7 +61,7 @@ public class Tastaturbot extends AdvancedRobot {
     }
 
     /**
-     * Schießt, wenn sich ein Roboter direkt vor der Kanone steht
+     * Schiesst, wenn sich ein Roboter direkt vor der Kanone steht
      * @param e - ScanEvent
      */
     public void onScannedRobot(ScannedRobotEvent e) {
