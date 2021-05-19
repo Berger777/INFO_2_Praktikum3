@@ -7,17 +7,28 @@ import robocode.ScannedRobotEvent;
 import java.awt.event.KeyEvent;
 import static java.awt.event.KeyEvent.*;
 
+/**
+ * Strategy-Implementation zu dem Tastaturbot
+ * @see prak3.Tastaturbot
+ */
 public class TastaturBotStrategy implements Strategy {
 
-    boolean moveForward = false;
-    boolean moveBackward = false;
+    private boolean moveForward = false;
+    private boolean moveBackward = false;
     private AdvancedRobot advancedRobot;
 
+    /**
+     * Wird beim Ändern der Strategy ausgeführt und übergibt den AdvancedRobot, der die Strategy ändern soll
+     * @param r - AdvancedRobot der die Strategy ändern soll
+     */
     @Override
     public void identify(AdvancedRobot r) {
         advancedRobot = r;
     }
 
+    /**
+     * Wird solange die Strategy aktiv ist in einer while-Schleife ausgeführt
+     */
     @Override
     public void move() {
         if(moveBackward){
@@ -28,11 +39,19 @@ public class TastaturBotStrategy implements Strategy {
         advancedRobot.execute();
     }
 
+    /**
+     * EventHandler auf verschiedene Events
+     * @param e event
+     */
     @Override
     public void reactEvent(Event e) {
 
     }
 
+    /**
+     * Reaktion auf ein Key-Event
+     * @param e KeyEvent
+     */
     @Override
     public void reactKey(KeyEvent e) {
         switch (e.getKeyCode()) {
@@ -56,7 +75,10 @@ public class TastaturBotStrategy implements Strategy {
         }
     }
 
-
+    /**
+     * Wenn ein anderer Roboter gescannt wurde
+     * @param e ScannedRobot
+     */
     @Override
     public void fire(ScannedRobotEvent e) {
         advancedRobot.fire(1);
